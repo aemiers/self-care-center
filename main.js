@@ -6,15 +6,12 @@ var meditationIcon = document.querySelector('.meditation-icon');
 var choice = document.querySelector('.message-selection');
 var messageSection = document.querySelector('.select-message-section');
 var generatedMessageSection = document.querySelector('.generated-message');
-var personalizedMessageLocation = document.querySelector('.welcoming-area');
 var main = document.querySelector('.main')
-//login form
 var loginForm = document.querySelector('.login-form');
 var loginSubmitButton = document.querySelector('.login-submit');
-var firstName = document.querySelector('.first-name');
-var lastName = document.querySelector('.last-name');
+var firstName = document.querySelector('#first-name');
+var lastName = document.querySelector('#last-name');
 var firstNameLocation = document.querySelector('.welcoming-area');
-
 var affirmations = [
   "I forgive myself and set myself free.",
   "I believe I can be all that I want to be.",
@@ -47,23 +44,10 @@ var mantras = [
   "Onward and upward.",
   "I am the sky, the rest is weather."
 ];
-//
-// var currentAffirmation;
-// var currentMantra;
-// var firstName;
+var currentName = "";
 
-//eventlisteners
-// window.addEventListener('load', showLogin);
 loginSubmitButton.addEventListener('click', generatePersonalizedWelcome);
 receiveMessageButton.addEventListener('click', generateMessage);
-
-// function showLogin() {
-//   loginForm.classList.remove('hidden');
-//   messageSection.classList.add('hidden');
-//   generatedMessageSection.classList.add('hidden');
-// }
-
-//thinking I don't really need showLogin function
 
 function hideLogin() {
   loginForm.classList.add('hidden');
@@ -73,8 +57,8 @@ function hideLogin() {
 function generatePersonalizedWelcome() {
   event.preventDefault();
   hideLogin();
-  var firstName = firstName.innerText;
-  firstNameLocation.push(`Welcome to your new inner-calm, ${firstName}!`);
+  currentName = firstName.value;
+  firstNameLocation.innerText = "Welcome to your new inner-calm, " + currentName + "!";
 }
 
 function hideImage() {
