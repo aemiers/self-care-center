@@ -49,21 +49,16 @@ var currentName = "";
 loginSubmitButton.addEventListener('click', generatePersonalizedWelcome);
 receiveMessageButton.addEventListener('click', generateMessage);
 
-function hideLogin() {
-  loginForm.classList.add('hidden');
-  main.classList.remove('hidden');
+function showHide(domElement1, domElement2) {
+  domElement1.classList.add('hidden');
+  domElement2.classList.remove('hidden');
 }
 
 function generatePersonalizedWelcome() {
   event.preventDefault();
-  hideLogin();
+  showHide(loginForm, main);
   currentName = firstName.value;
   firstNameLocation.innerText = "Welcome to your new inner-calm, " + currentName + "!";
-}
-
-function hideImage() {
-  meditationIcon.classList.add('hidden');
-  generatedMessageText.classList.remove('hidden');
 }
 
 function getRandomIndex(array) {
@@ -72,7 +67,7 @@ function getRandomIndex(array) {
 
 function generateMessage() {
   event.preventDefault();
-  hideImage();
+  showHide(meditationIcon, generatedMessageText);
   for (i=0; i<choice.length; i++);
   if (affirmationButton.checked) {
     generatedMessageText.innerText = affirmations[getRandomIndex(affirmations)];
